@@ -1,13 +1,15 @@
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import {Router, Route} from 'react-router';
+import {Provider} from 'react-redux';
+import {App} from '../components';
 
-import Main from '../components/Main';
-
-var routes = (
-	<Router history={hashHistory}>
-		<Route path="/" component={Main}>
-		</Route>
-	</Router>
-);
-
-export default routes;
+export default function routes(store, history) {
+	return (
+		<Provider store={store}>
+			<Router history={history}>
+				<Route path="/" component={App}>
+				</Route>
+			</Router>
+		</Provider>
+	);
+}
